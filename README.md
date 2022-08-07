@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# unin-client
 
-## Getting Started
+This is the web client for the Universal Inventory system.
 
-First, run the development server:
+## Install Node Modules
 
-```bash
-npm run dev
-# or
-yarn dev
+```shell
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Testing Locally
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Place `.env.local` file on the root.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```ini
+NEXT_PUBLIC_UNIN_CONTRACT_ADDR="0x0"
+NEXT_PUBLIC_UNIN_ITEM_COST_DEC="0.05"
+NEXT_PUBLIC_UNIN_ITEM_COST_HEX="0xB1A2BC2EC50000"
+NEXT_PUBLIC_WEB3_PROVIDER="wss://"
+NEXT_PUBLIC_UNIN_API_ENDPOINT="https://"
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Run development server.s
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npm run dev
+```
