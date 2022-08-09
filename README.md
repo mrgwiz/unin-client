@@ -20,7 +20,7 @@ NEXT_PUBLIC_WEB3_PROVIDER="wss://"
 NEXT_PUBLIC_UNIN_API_ENDPOINT="https://"
 ```
 
-Run development server.s
+Run development server.
 
 ```shell
 npm run dev
