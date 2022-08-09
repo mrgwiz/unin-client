@@ -40,6 +40,7 @@ const Item: NextPage = () => {
     });
     const [name, setName] = useState<string>('');
     const [description, setDescription] = useState<string>('');
+    const [isRegistered, setIsRegistered] = useState(false);
 
     useEffect(() => {
         if (!router.query.tokenId)
@@ -62,7 +63,6 @@ const Item: NextPage = () => {
                 setUnin(unin);
             })
             .catch(err => console.error(err));
-
     }
 
     function getItemInfo() {
@@ -73,6 +73,7 @@ const Item: NextPage = () => {
             .then((item) => {
                 if (!item) return;
 
+                setIsRegistered(true);
                 setName(item.name);
                 setDescription(item.description);
             })
@@ -95,13 +96,36 @@ const Item: NextPage = () => {
             name,
             description
         ).then((result) => {
-            console.log(result);
             if (!result)
                 throw new Error('Error registering UNIN.');
             dispatch(addMessage({ type: 'success', message: 'Item registered successfully.' }));
             console.log('Item registered');
         })
         .catch(err => {
+            dispatch(addMessage({ type: 'error', message: err.message }));
+            console.error(err)
+        });
+    }
+
+    async function claimItem() {
+        const uninClient = new Web3UninClient();
+
+        const contract = uninClient.getContract();
+        if (!contract) return false;
+
+        const message = "Claim token";
+        const signature = await uninClient.signMessage(message);
+
+        uninApi.claimItem(
+            router.query.tokenId.toString(),
+            message,
+            signature
+        ).then((result) => {
+            if (!result)
+                throw new Error('Error claiming UNIN.');
+            dispatch(addMessage({ type: 'success', message: 'Item claimed successfully.' }));
+            console.log('Item claimed');
+        }).catch(err => {
             dispatch(addMessage({ type: 'error', message: err.message }));
             console.error(err)
         });
@@ -131,7 +155,7 @@ const Item: NextPage = () => {
                     <Input placeholder="Name" value={name} onChange={(e) => {
                         if (e.target.value.length > MAX_SIZE_NAME) return;
                         setName(e.target.value);
-                    }} />
+                    }} disabled={isRegistered} />
                     <Flex
                         fontSize={'sm'}
                         justifyContent="flex-end"
@@ -141,7 +165,7 @@ const Item: NextPage = () => {
                     <Textarea placeholder="Description" value={description} onChange={(e) => {
                         if (e.target.value.length > MAX_SIZE_DESCRIPTION) return;
                         setDescription(e.target.value);
-                    }} />
+                    }} disabled={isRegistered} />
                     <Flex
                         fontSize={'sm'}
                         justifyContent="flex-end"
@@ -149,7 +173,10 @@ const Item: NextPage = () => {
                     >{description.length} / {MAX_SIZE_DESCRIPTION}</Flex>
 
                     <HStack justifyContent="right" width="100%">
-                        <Button onClick={registerItem}>Register</Button>
+                        {!isRegistered
+                            ? <Button onClick={registerItem}>Register</Button>
+                            : <Button onClick={claimItem}>Claim</Button>
+                        }
                     </HStack>
                 </VStack>
             </VStack>

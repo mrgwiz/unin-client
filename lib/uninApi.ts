@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-    claimItem: async (tokenId: number, message: string, signature: string) => {
+    claimItem: async (tokenId: string, message: string, signature: unknown) => {
         return axios.post(`${process.env.NEXT_PUBLIC_UNIN_API_ENDPOINT}/items/claim/${tokenId}`, {
             message,
             signature
