@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 
 import {
     Container,
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
             </Head>
 
             <VStack>
+                <Image src="/UninLogo.png" alt="Unin Logo" width="246" height="242" />
                 <Heading size="2xl" as="h1">UNIN</Heading>
 
                 <p>Your inventory across the metaverse.</p>
