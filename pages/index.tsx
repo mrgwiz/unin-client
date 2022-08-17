@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 
 import Menu from '../components/Menu';
+import Footer from '../components/Footer';
 
 const Home: NextPage = () => {
     return (
@@ -26,6 +27,8 @@ const Home: NextPage = () => {
                 <p>Your inventory across the metaverse.</p>
 
                 <Menu showHome={false} />
+
+                <Footer />
             </VStack>
         </Container>
     )
