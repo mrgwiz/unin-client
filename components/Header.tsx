@@ -8,9 +8,10 @@ import Image from 'next/image';
 type Props = {
     title?: string,
     description?: string
+    imgSrc?: string
 }
 
-const Header = ({ title, description }:Props) => {
+const Header = ({ title, description, imgSrc }:Props) => {
     title ||= "The Universal Inventory System";
     description ||= "Your inventory across the metaverse.";
 
@@ -21,8 +22,8 @@ const Header = ({ title, description }:Props) => {
                 <meta name="description" content={description} />
             </Head>
             <Heading as="h1" size="2xl">
-                <HStack>
-                    <Image src="/UninLogo.png" alt="Unin Logo" width="48px" height="48px" />
+                <HStack alignContent="center">
+                    {imgSrc && <img src={imgSrc} alt="Unin Logo" width="32px" height="32px" />}
                     <span>Universal Inventory</span>
                 </HStack>
             </Heading>
