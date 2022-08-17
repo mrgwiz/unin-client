@@ -20,7 +20,7 @@ const Home: NextPage = () => {
             </Head>
 
             <VStack>
-                <Image src="/UninLogo.png" alt="Unin Logo" width="246" height="242" />
+                <img src="https://ipfs.io/ipfs/QmPkvPWE5wAiQL57nR5mW6oV3A31akdKZzuKbTj6WoHXfH?filename=UninLogo.png" alt="Unin Logo" width="246" height="242" />
                 <Heading size="2xl" as="h1">UNIN</Heading>
 
                 <p>Your inventory across the metaverse.</p>

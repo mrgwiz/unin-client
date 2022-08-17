@@ -28,7 +28,7 @@ const InventoryForOwner: NextPage = () => {
 
     return (
         <Container>
-            <Header />
+            <Header imgSrc="https://ipfs.io/ipfs/QmUetu9vGG3q2yymcyC3M2vNovMJ6nSrJpYjCZ4f3eRyAY?filename=Backpack1.png" />
             {inventory.length && <Inventory items={inventory} />}
         </Container>
     );

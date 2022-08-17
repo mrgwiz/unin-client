@@ -29,7 +29,7 @@ const UninForOwner: NextPage = () => {
 
     return (
         <Container>
-            <Header />
+            <Header imgSrc="https://ipfs.io/ipfs/QmVN3QJJrwHREDYxTXBNi1RfhCA5pcVq8xL73No8DFtprf?filename=Backpack2.png" />
             {unin.length && <Unin unin={unin} />}
         </Container>
     );
