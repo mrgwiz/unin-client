@@ -18,10 +18,10 @@ const Footer = () => {
                         }}
                     />
                 </HStack>
-                <p>Created by <a target="_blank" href="https://www.linkedin.com/in/mrgwiz">
+                <p>Created by <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/mrgwiz">
                     <Button variant={"link"} color={colors.red}>mrgwiz</Button>
                 </a></p>
-                <p>Open Source on <a target="_blank" href="https://github.com/mrgwiz">
+                <p>Open Source on <a target="_blank" rel="noreferrer" href="https://github.com/mrgwiz">
                     <Button variant={"link"} color={colors.orange}>GitHub</Button>
                 </a></p>
             </VStack>
