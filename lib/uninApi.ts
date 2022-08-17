@@ -6,7 +6,6 @@ export default {
             message,
             signature
         }).then(response => {
-            console.log(response.data);
             return true;
         }).catch(error => {
             console.error(error);
