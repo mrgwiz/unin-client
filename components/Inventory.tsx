@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router'
+
 import {
     Box,
     Grid,
@@ -14,6 +16,8 @@ interface Props {
 }
 
 const Inventory = ({ items }: Props) => {
+    const router = useRouter();
+
     return (
         <Box>
             <Heading as="h2" size="1xl">Inventory</Heading>
@@ -28,6 +32,9 @@ const Inventory = ({ items }: Props) => {
                             height="32"
                             justifyContent="center"
                             width="100%"
+                            onClick={() => {
+                                router.push(`/item/${item.itemId}`)
+                            }}
                         >
                             <Box
                                 background={gradient}
