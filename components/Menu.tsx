@@ -16,7 +16,7 @@ const Menu = ({ showHome = true }:Props) => {
     const selectedAddress = useSelector((state:RootState) => state.web3.selectedAddress);
 
     return (
-        <HStack spacing={4}>
+        <HStack spacing={4} marginTop={4} marginBottom={4}>
             {showHome && <Link key={0} href="/">Home</Link>}
             {selectedAddress && [
                 <Link key={1} href="/item">Create</Link>,
