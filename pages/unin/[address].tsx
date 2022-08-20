@@ -12,6 +12,8 @@ import UninWeb3Client from '../../lib/web3UninClient';
 
 const UninForOwner: NextPage = () => {
     const router = useRouter();
+    const [status, setStatus] = useState<string>('');
+
 
     const [unin, setUnin] = useState<Unin[]>([]);
 
@@ -19,18 +21,27 @@ const UninForOwner: NextPage = () => {
         const address = router?.query?.address;
         if (!address) return;
 
+        setStatus('Loading...');
+
         const addrStr = `${address}`;
 
         const web3Client = new UninWeb3Client();
         web3Client.getUnin(addrStr)
-            .then(unin => setUnin(unin))
-            .catch(err => console.error(err));
+            .then(unin => {
+                if (!unin.length)
+                    return setStatus('No unin found.');
+                setUnin(unin)
+            })
+            .catch(err => {
+                console.error(err)
+                setStatus('Error loading UNIN.');
+            });
     }, [router.query.address]);
 
     return (
         <Container>
             <Header imgSrc="https://ipfs.io/ipfs/QmVN3QJJrwHREDYxTXBNi1RfhCA5pcVq8xL73No8DFtprf?filename=Backpack2.png" />
-            {unin.length && <Unin unin={unin} />}
+            {unin.length ? <Unin unin={unin} /> : <div>{status}</div>}
         </Container>
     );
 }
