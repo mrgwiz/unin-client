@@ -5,7 +5,8 @@ import colors from '../lib/colors';
 
 import {
     Button,
-    HStack
+    HStack,
+    useColorMode
 } from '@chakra-ui/react';
 
 import Connect from './Connect';
@@ -15,6 +16,8 @@ type Props = {
 }
 
 const Menu = ({ showHome = true }:Props) => {
+    const { colorMode, toggleColorMode } = useColorMode()
+
     const selectedAddress = useSelector((state:RootState) => state.web3.selectedAddress);
 
     return (
@@ -26,6 +29,9 @@ const Menu = ({ showHome = true }:Props) => {
                 <Link key={3} href={`/inventory/${selectedAddress}`}><Button variant={"link"} color={colors.purple}>Inventory</Button></Link>
             ]}
             <Connect />
+            <Button onClick={toggleColorMode} style={{ position: 'absolute', top: 8, right: 8 }}>
+                {colorMode === 'light' ? 'Dark' : 'Light'}
+            </Button>
         </HStack>
     );
 }
