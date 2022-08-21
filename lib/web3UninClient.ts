@@ -19,17 +19,14 @@ class Web3UninClient extends Web3Client {
                 if (!contract)
                     throw 'Could not get contract';
 
-                const params = {
-                    from: this.getSelectedAddress(),
-                    to: process.env.NEXT_PUBLIC_UNIN_CONTRACT_ADDR,
-                    data: contract.methods.mint(this.getSelectedAddress(), [type, ...attrs]).encodeABI(),
-                    gasPrice: '0x5F5E100',
-                    value: process.env.NEXT_PUBLIC_UNIN_ITEM_COST_HEX
-                };
-
                 this.getEthereum().request({
                     method: 'eth_sendTransaction',
-                    params: [params]
+                    params: [{
+                        from: this.getSelectedAddress(),
+                        to: process.env.NEXT_PUBLIC_UNIN_CONTRACT_ADDR,
+                        data: contract.methods.mint(this.getSelectedAddress(), [type, ...attrs]).encodeABI(),
+                        value: process.env.NEXT_PUBLIC_UNIN_ITEM_COST_HEX
+                    }]
                 })
                     .then(() => resolve(true))
                     .catch((error: string) => {
