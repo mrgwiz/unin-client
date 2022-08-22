@@ -26,7 +26,8 @@ const Menu = ({ showHome = true }:Props) => {
             {selectedAddress && [
                 <Link key={1} href="/item"><Button variant={"link"} color={colors.green}>Create</Button></Link>,
                 <Link key={2} href={`/unin/${selectedAddress}`}><Button variant={"link"} color={colors.blue}>UNIN</Button></Link>,
-                <Link key={3} href={`/inventory/${selectedAddress}`}><Button variant={"link"} color={colors.purple}>Inventory</Button></Link>
+                <Link key={3} href={`/inventory/${selectedAddress}`}><Button variant={"link"} color={colors.purple}>Inventory</Button></Link>,
+                <Link key={4} href={`/docs`}><Button variant={"link"} color={colors.pink}>Docs</Button></Link>
             ]}
             <Connect />
             <Button onClick={toggleColorMode} style={{ position: 'absolute', top: 8, right: 8 }}>
