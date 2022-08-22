@@ -10,18 +10,22 @@ import {
     Th,
     Thead,
     Tr,
+    useColorModeValue,
     VStack
 } from "@chakra-ui/react";
 import Header from "../../components/Header";
 
 const Docs: NextPage = () => {
+    const bg = useColorModeValue('gray.300', 'gray.600')
+    const color = useColorModeValue('black', 'white')
+
     return (
         <Container>
             <Header imgSrc="https://ipfs.io/ipfs/QmPkvPWE5wAiQL57nR5mW6oV3A31akdKZzuKbTj6WoHXfH?filename=UninLogo.png" />
             <VStack alignItems={"flex-start"}>
-                <Heading as={"h2"} size="md">API Documentation</Heading>
+                <Heading as={"h2"} marginBottom="16px" size="md">API Documentation</Heading>
 
-                <VStack alignItems={"flex-start"} width="100%" paddingTop="16px">
+                <VStack alignItems={"flex-start"} backgroundColor={bg} borderRadius="16px" color={color} width="100%" padding="8px">
                     <Heading as={"h3"} size="sm">/items/owner/:owner</Heading>
                     <p>
                         Returns all items owned by the given owner.
@@ -64,7 +68,7 @@ const Docs: NextPage = () => {
                 </VStack>
                 <Divider />
 
-                <VStack alignItems={"flex-start"} width="100%" paddingTop="16px">
+                <VStack alignItems={"flex-start"} backgroundColor={bg} borderRadius="16px" width="100%" padding="8px">
                     <Heading as={"h3"} size="sm">/items/:id</Heading>
                     <p>
                         Returns the item with the given id.
